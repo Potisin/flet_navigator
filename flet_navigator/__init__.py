@@ -267,6 +267,9 @@ class PageData:
 
     def navigate(self, route: str, args: Arguments=None, parameters: dict[str, Any]=None) -> None:
         """Navigate to specific route. Parameters aren't used if navigator is virtual."""
+
+        if not parameters:
+            parameters = {}
         if self.navigator.virtual:
             self.navigator.navigate(route, self.page, args)
 
