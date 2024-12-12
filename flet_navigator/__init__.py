@@ -739,6 +739,13 @@ def route(route_name: str) -> Any:
 
     return _route_decorator
 
+def routes(route_names: list) -> Any:
+    """Link routes to last initialized navigator."""
+    def _route_decorator(page_definition: PageDefinition) -> None:
+        for route_name in route_names:
+            _pre_def_routes[route_name] = page_definition
+
+    return _route_decorator
 
 def define_page(path: str, name: str=None) -> PageDefinition:
     """Get page from module."""
