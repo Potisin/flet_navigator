@@ -412,7 +412,7 @@ def route(route: Union[str, PageDefinition]) -> Any:
 
         return _route_decorator
 
-def routes(routes_list: List[str]) -> Callable:
+def routes(routes_list: list[str]) -> Callable:
     """Link multiple routes to the last initialized navigator.
 
     This function registers a list of routes as strings, associating them with a given 
