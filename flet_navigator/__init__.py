@@ -412,6 +412,18 @@ def route(route: Union[str, PageDefinition]) -> Any:
 
         return _route_decorator
 
+def routes(routes_list: List[str]) -> Callable:
+    """Link multiple routes to the last initialized navigator.
+
+    This function registers a list of routes as strings, associating them with a given 
+    page definition."""
+
+    def _routes_decorator(page_definition: Callable) -> None:
+        for route in routes_list:
+            _pre_def_routes[route] = page_definition
+
+    return _routes_decorator
+
 
 def load_page(path: str, name: Optional[str]=None) -> PageDefinition:
     """Load a page definition from a specified module.
